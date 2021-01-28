@@ -4,7 +4,8 @@ import os
 import bs4
 import pandas as pd
 from datetime import datetime
-#import xlsxwriter
+import xlsxwriter
+import time
 
 #Change current working directory
 os.chdir('C:/Users/12407/Desktop/Education/Projects/Investing')
@@ -27,6 +28,7 @@ os.chdir('C:/Users/12407/Desktop/Education/Projects/Investing/Cambria_Funds_Data
 reviews = {}
 for key in data_list:
     driver.get('https://www.cambriafunds.com/'+key+'-holdings')
+    time.sleep(3)
     res = driver.page_source
     bs4Soup = bs4.BeautifulSoup(res, 'html.parser')
     data_tags = bs4Soup.select("tr")
